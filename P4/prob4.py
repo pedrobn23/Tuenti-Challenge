@@ -2,17 +2,11 @@ import math
 import numpy as np
 from functools import reduce
 def mcd(a, b):
-
 	resto = 0
-
 	while(b > 0):
-
 		resto = b
-
 		b = a % b
-
 		a = resto
-
 	return a
 
 
@@ -22,7 +16,7 @@ def mcm(a,b):
 flatten = lambda l: [item for sublist in l for item in sublist]
 
 t = int(input())  # read a line with a single integer
-##print(t)
+
 for i in range(1,t + 1):
   size = int(input())
   vec =  ([int(s) for s in input().split(" ")])
@@ -33,13 +27,9 @@ for i in range(1,t + 1):
       dic[p] += 1
     else:
       dic[p] = 1
-
-
   x = []
   sol = 1
   for p in dic.keys():
-    #print(dic[p],p)
-    #print(dic[p]%p)
     if dic[p]%p != 0:
         x.append(p/(mcd(dic[p]%p,p)))
 
@@ -47,10 +37,8 @@ for i in range(1,t + 1):
    sol = reduce( lambda x, y: mcm(x,y), x)
    sol = int(sol)
 
-
-  #print(sol)
   num = sum( dic[p]/p*sol for p in dic.keys())
   b = mcd(len(vec)*sol, int(num))
 
   print("Case #{}: {}/{}".format(i, int(len(vec)*sol/b), int(num/b)))
-  
+
